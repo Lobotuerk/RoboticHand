@@ -14,7 +14,7 @@ n = 0
 send(vector, arduino)
 while (True):
     time +=1
-    if keyboard.is_pressed('w') and time > 1000 and vector[n] < 170:
+    if keyboard.is_pressed('w') and time > 1000 and vector[n] < 100:
         vector[n] +=10
         time = 0
         os.system('cls')

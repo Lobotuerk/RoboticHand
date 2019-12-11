@@ -5,26 +5,41 @@ import keyboard
 import os
 from funciones import send
 
-arduino = serial.Serial('COM14', 9600)
+arduino = serial.Serial('COM9', 9600)
 time.sleep(2)
 
-vector = [0,0,0,0,59]
+vector = [0,0,0,0,0]
 time = 0;
-n = 4
+n = 0
 send(vector, arduino)
 while (True):
     time +=1
-    if keyboard.is_pressed('w') and time > 40:
-        vector[n] +=1
+    if keyboard.is_pressed('w') and time > 1000 and vector[n] < 170:
+        vector[n] +=10
         time = 0
         os.system('cls')
         print(vector)
+        print(n)
         send(vector,arduino)
-    if keyboard.is_pressed('s') and time > 40:
-        vector[n] -=1
+
+    elif keyboard.is_pressed('d') and time > 1000 and n < 4:
+        n += 1
         time = 0
         os.system('cls')
         print(vector)
+        print(n)
+    elif keyboard.is_pressed('a') and time > 1000 and n > 0:
+        n -= 1
+        time = 0
+        os.system('cls')
+        print(vector)
+        print(n)
+    elif keyboard.is_pressed('s') and time > 1000 and vector[n] > 0:
+        vector[n] -=10
+        time = 0
+        os.system('cls')
+        print(vector)
+        print(n)
         send(vector,arduino)
 
 

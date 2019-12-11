@@ -20,7 +20,7 @@ class Listener(myo.DeviceListener):
     self.rssi = None
     self.emg = None
     self.temp = 0
-    self.arduino = serial.Serial('COM14', 9600)
+    self.arduino = serial.Serial('COM10', 9600)
 
   def output(self):
      if not self.interval.check_and_reset():

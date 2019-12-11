@@ -6,13 +6,6 @@ Servo servo_mayor;
 Servo servo_indice;
 Servo servo_pulgar;
 
-#define pinRojo 9
-#define pinVerde 10
-#define pinAzul 11
-#define pinNegRojo 17
-#define pinNegVerde 18
-#define pinNegAzul 19
-
 void setup() {
   Serial.begin(9600);
 servo_menique.attach(4);
@@ -20,13 +13,6 @@ servo_anular.attach(5);
 servo_mayor.attach(6);
 servo_indice.attach(7);
 servo_pulgar.attach(8);
-  pinMode(pinRojo,OUTPUT);
-  pinMode(pinVerde,OUTPUT);
-  pinMode(pinAzul,OUTPUT);
-  pinMode(pinNegRojo,OUTPUT);
-  pinMode(pinNegVerde,OUTPUT);
-  pinMode(pinNegAzul,OUTPUT);
-  escribir_RGB(255,255,255);
 }
 
 int count = 0;
@@ -48,20 +34,10 @@ void loop()
     Serial.println(servo[count]);
     count++;
    }
-   servo_pulgar.write(170 - servo[0]);   
-  servo_indice.write(170 - servo[1]);  
-  servo_mayor.write(170 - servo[2]);
-   servo_anular.write(150 - servo[3]);  
-  servo_menique.write(160 - servo[4]);
+   servo_pulgar.write(servo[0]);   
+  servo_indice.write(servo[1]);  
+  servo_mayor.write(servo[2]);
+   servo_anular.write(servo[3]);  
+  servo_menique.write(servo[4]);
    
 }
-
-void escribir_RGB(int Rojo,int Verde,int Azul){
-  analogWrite(pinRojo,Rojo);
-  analogWrite(pinVerde,Verde);
-  analogWrite(pinAzul,Azul);
-  digitalWrite(pinNegRojo,(1-(Rojo/255)));
-  digitalWrite(pinNegVerde,(1-(Verde/255)));
-  digitalWrite(pinNegAzul,(1-(Azul/255)));
-}
-

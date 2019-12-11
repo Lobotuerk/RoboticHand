@@ -34,7 +34,7 @@ class Listener(myo.DeviceListener):
 
 
 def main():
-  queue_size = 10
+  queue_size = 100
 
   # Initialize Myo and create a Hub and our listener.
   myo.init()
